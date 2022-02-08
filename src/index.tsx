@@ -1,15 +1,40 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import "bootstrap/dist/css/bootstrap.css";
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import {
+	BrowserRouter as Router,
+	Navigate,
+	Route,
+	Routes,
+} from "react-router-dom";
+import Header from "./header/Header";
+import Home from "./pages/Home";
+import Profiles from "./pages/Profiles";
+import Tasks from "./pages/Tasks";
+import Toolbox from "./pages/Toolbox";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<Router>
+			<div className="app-container">
+				<div>
+					<Header />
+				</div>
+				<div>
+					<Routes>
+						<Route path="/home" element={<Home />} />
+						<Route path="/profiles" element={<Profiles />} />
+						<Route path="/tasks" element={<Tasks />} />
+						<Route path="/toolbox" element={<Toolbox />} />
+						<Route path="*" element={<Navigate to="/home" replace />} />
+					</Routes>
+				</div>
+			</div>
+		</Router>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
