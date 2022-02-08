@@ -1,7 +1,7 @@
 import "./Toolbox.scss";
 
 const Toolbox = (): JSX.Element => {
-	return <div className="toolbox">Toolbox</div>;
+	return <div>Toolbox</div>;
 };
 
 export default Toolbox;

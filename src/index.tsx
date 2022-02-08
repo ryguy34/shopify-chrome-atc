@@ -19,7 +19,7 @@ ReactDOM.render(
 	<React.StrictMode>
 		<Router>
 			<div className="app-container">
-				<div>
+				<div className="header-container">
 					<Header />
 				</div>
 				<div>
