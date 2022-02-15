@@ -14,6 +14,17 @@ code {
 		monospace;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+	-ms-overflow-style: none;
+	scrollbar-width: none; /* Firefox */
+}
+
 .app-container {
 	align-items: center;
 	display: flex;

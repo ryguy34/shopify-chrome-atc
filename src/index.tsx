@@ -10,7 +10,7 @@ import {
 	Routes,
 } from "react-router-dom";
 import Header from "./header/Header";
-import Home from "./pages/Home";
+import Proxies from "./pages/Proxies";
 import Profiles from "./pages/Profiles";
 import Tasks from "./pages/Tasks";
 import Toolbox from "./pages/Toolbox";
@@ -24,11 +24,11 @@ ReactDOM.render(
 				</div>
 				<div>
 					<Routes>
-						<Route path="/home" element={<Home />} />
+						<Route path="/proxies" element={<Proxies />} />
 						<Route path="/profiles" element={<Profiles />} />
 						<Route path="/tasks" element={<Tasks />} />
 						<Route path="/toolbox" element={<Toolbox />} />
-						<Route path="*" element={<Navigate to="/home" replace />} />
+						<Route path="*" element={<Navigate to="/proxies" replace />} />
 					</Routes>
 				</div>
 			</div>

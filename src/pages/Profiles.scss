@@ -1,3 +1,27 @@
 .profiles {
 	color: black;
 }
+
+.form-floating {
+	width: 150px;
+	margin-right: 3px;
+}
+
+.delivery-address-container {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.delivery-address-container-name {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+// .col-md {
+// 	width: ;
+// }
