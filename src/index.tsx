@@ -10,7 +10,7 @@ import {
 	Routes,
 } from "react-router-dom";
 import Header from "./header/Header";
-import Proxies from "./pages/Proxies";
+import ProxiesPage from "./pages/ProxiesPage";
 import Profiles from "./pages/Profiles";
 import Tasks from "./pages/Tasks";
 import Toolbox from "./pages/Toolbox";
@@ -24,7 +24,7 @@ ReactDOM.render(
 				</div>
 				<div>
 					<Routes>
-						<Route path="/proxies" element={<Proxies />} />
+						<Route path="/proxies" element={<ProxiesPage />} />
 						<Route path="/profiles" element={<Profiles />} />
 						<Route path="/tasks" element={<Tasks />} />
 						<Route path="/toolbox" element={<Toolbox />} />
