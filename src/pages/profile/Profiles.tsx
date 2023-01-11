@@ -3,6 +3,7 @@ import { useState } from "react";
 import IProfile from "../../interfaces/IProfile";
 
 const Profiles = (): JSX.Element => {
+	const [isShippingAndBilling, setIsShippingAndBilling] = useState(false);
 	const [userFirstName, setUserFirstName] = useState("");
 	const [userLastName, setUserLastName] = useState("");
 	const [userAddress, setUserAddress] = useState("");
@@ -12,9 +13,24 @@ const Profiles = (): JSX.Element => {
 	const [userZipCode, setUserZipCode] = useState("");
 	const [profileList, updateProfileList] = useState<IProfile[]>([]);
 
+	const stateList = [
+		"Alabama",
+		"Alaska",
+		"Arizona",
+		"Arkansas",
+		"California",
+		"Colorado",
+		"Connecticut",
+		"Illinois",
+		"Texas",
+		"Tennessee",
+		"Florida",
+		"Michigan",
+	];
+
 	return (
 		<div className="container">
-			<div className="delivery-address-container-name">Delivery Address</div>
+			<div className="delivery-address-container-name">Shipping Address</div>
 			<div className="row">
 				<div className="col-md">
 					<div className="form-floating mb-3">
@@ -80,7 +96,9 @@ const Profiles = (): JSX.Element => {
 							<option selected disabled value="">
 								State
 							</option>
-							<option>Illinois</option>
+							{stateList.map((state: string) => (
+								<option>{state}</option>
+							))}
 						</select>
 					</div>
 				</div>
