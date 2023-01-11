@@ -9,11 +9,11 @@ import {
 	Route,
 	Routes,
 } from "react-router-dom";
-import Header from "./header/Header";
-import ProxiesPage from "./pages/ProxiesPage";
-import Profiles from "./pages/Profiles";
-import Tasks from "./pages/Tasks";
-import Toolbox from "./pages/Toolbox";
+import Header from "./pages/header/Header";
+import ProxiesPage from "./pages/proxies/ProxiesPage";
+import Profiles from "./pages/profile/Profiles";
+import Tasks from "./pages/tasks/Tasks";
+import Toolbox from "./pages/toolbox/Toolbox";
 
 ReactDOM.render(
 	<React.StrictMode>

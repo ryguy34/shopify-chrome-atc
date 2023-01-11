@@ -1,25 +1,15 @@
 import "./ProxiesPage.scss";
-import ProxyGroup from "../interfaces/ProxyGroup";
 import ProxyGroupEditor from "./ProxyGroupEditor";
 import ProxyListEditor from "./ProxyListEditor";
 import { useState } from "react";
-
-interface ProxiesPageInterface {
-	proxyGroups: ProxyGroup[];
-}
-
-const initialProxyGroupList: ProxiesPageInterface = {
-	proxyGroups: [],
-};
+import IProxyGroup from "../../interfaces/IProxyGroup";
 
 const ProxiesPage = (): JSX.Element => {
-	const [proxyGroupList, setProxyGroupList] = useState<ProxiesPageInterface>(
-		initialProxyGroupList
-	);
+	const [proxyGroupList, setProxyGroupList] = useState<IProxyGroup[]>([]);
 
 	return (
 		<div className="proxies-page-container">
-			<ProxyGroupEditor />
+			<ProxyGroupEditor proxyGroup={proxyGroupList} />
 			<ProxyListEditor />
 		</div>
 	);
