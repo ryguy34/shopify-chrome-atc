@@ -12,6 +12,7 @@ const ProfileList = (): JSX.Element => {
 
 	return (
 		<div className="profile-list">
+			Profiles
 			<section>{renderProfileList}</section>
 		</div>
 	);

@@ -51,6 +51,6 @@
   },
   "devDependencies": {
     "@types/react-router-bootstrap": "^0.24.5",
-    "sass": "^1.49.7"
+    "sass": "^1.59.3"
   }
 }
