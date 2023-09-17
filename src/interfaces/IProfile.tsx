@@ -1,4 +1,5 @@
 export default interface IProfile {
+	profileName: string;
 	firstName: string;
 	lastName: string;
 	address: string;

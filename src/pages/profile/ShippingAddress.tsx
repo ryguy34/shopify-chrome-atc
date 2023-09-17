@@ -1,9 +1,26 @@
-import "./Profiles.scss";
+import "./ShippingAddress.scss";
 import { useState } from "react";
-import IProfile from "../../interfaces/IProfile";
+import { profileAdded } from "../../reducers/profileListSlice";
+import { useDispatch } from "react-redux";
+const stateList = [
+	"Alabama",
+	"Alaska",
+	"Arizona",
+	"Arkansas",
+	"California",
+	"Colorado",
+	"Connecticut",
+	"Illinois",
+	"Texas",
+	"Tennessee",
+	"Florida",
+	"Michigan",
+];
 
-const Profiles = (): JSX.Element => {
+const ShippingAddress = (): JSX.Element => {
+	const dispatch = useDispatch();
 	const [isShippingAndBilling, setIsShippingAndBilling] = useState(false);
+	const [isErrorFree, setIsErrorFree] = useState(false);
 	const [userFirstName, setUserFirstName] = useState("");
 	const [userLastName, setUserLastName] = useState("");
 	const [userAddress, setUserAddress] = useState("");
@@ -11,25 +28,26 @@ const Profiles = (): JSX.Element => {
 	const [userState, setUserState] = useState("");
 	const [userCity, setUserCity] = useState("");
 	const [userZipCode, setUserZipCode] = useState("");
-	const [profileList, updateProfileList] = useState<IProfile[]>([]);
+	const [profileName, setProfileName] = useState("");
 
-	const stateList = [
-		"Alabama",
-		"Alaska",
-		"Arizona",
-		"Arkansas",
-		"California",
-		"Colorado",
-		"Connecticut",
-		"Illinois",
-		"Texas",
-		"Tennessee",
-		"Florida",
-		"Michigan",
-	];
+	const handleFirstNameChange = (e: any) => setUserFirstName(e.target.value);
+
+	const handleProfileNameChange = (e: any) => {
+		setProfileName(e.target.value);
+		setIsErrorFree(true);
+	};
+
+	const onNextPage = () => {
+		if (isErrorFree && profileName) {
+			dispatch(profileAdded(profileName));
+			setUserFirstName("");
+			setProfileName("");
+			setIsErrorFree(false);
+		}
+	};
 
 	return (
-		<div className="container">
+		<div>
 			<div className="delivery-address-container-name">Shipping Address</div>
 			<div className="row">
 				<div className="col-md">
@@ -128,22 +146,44 @@ const Profiles = (): JSX.Element => {
 						<label htmlFor="floatingInput">Zip Code</label>
 					</div>
 				</div>
+				<div className="col-md">
+					<div className="form-floating mb-3 address">
+						<input
+							type="profile-name"
+							value={profileName}
+							onChange={handleProfileNameChange}
+							className="form-control"
+							id="floatingInput"
+							placeholder=""
+						/>
+						<label htmlFor="floatingInput">Profile Name</label>
+					</div>
+				</div>
 			</div>
-			<div className="col-md">
-				<button
-					type="button"
-					className="btn btn-outline-success"
-					onClick={handleAddProfile}
-				>
-					Create Profile
-				</button>
+
+			<div className="form-check form-switch">
+				<input
+					className="form-check-input"
+					type="checkbox"
+					id="flexSwitchCheckDefault"
+				/>
+				<label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+					Same billing and shipping
+				</label>
 			</div>
+			<button
+				type="button"
+				className={
+					isErrorFree ? "btn btn-outline-success" : "btn btn-outline-danger"
+				}
+				disabled={!isErrorFree}
+				onClick={onNextPage}
+			>
+				{!isShippingAndBilling ? "Billing Info" : "Payment Info"}
+			</button>
 		</div>
 	);
 
-	function handleFirstNameChange(event: any) {
-		setUserFirstName(event.target.value);
-	}
 	function handleLastNameChange(event: any) {
 		setUserLastName(event.target.value);
 	}
@@ -163,21 +203,6 @@ const Profiles = (): JSX.Element => {
 	function handleZipCodeChange(event: any) {
 		setUserZipCode(event.target.value);
 	}
-
-	function handleAddProfile() {
-		updateProfileList([
-			...profileList,
-			{
-				firstName: userFirstName,
-				lastName: userLastName,
-				address: userAddress,
-				aptNum: userAptNum,
-				state: userState,
-				city: userCity,
-				zipCode: userZipCode,
-			},
-		]);
-	}
 };
 
-export default Profiles;
+export default ShippingAddress;

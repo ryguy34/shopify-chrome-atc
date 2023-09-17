@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
+import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -11,28 +12,31 @@ import {
 } from "react-router-dom";
 import Header from "./pages/header/Header";
 import ProxiesPage from "./pages/proxies/ProxiesPage";
-import Profiles from "./pages/profile/Profiles";
+import ProfilePage from "./pages/profile/ProfilePage";
 import Tasks from "./pages/tasks/Tasks";
 import Toolbox from "./pages/toolbox/Toolbox";
+import { store } from "./store/store";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Router>
-			<div className="app-container">
-				<div className="header-container">
-					<Header />
+		<Provider store={store}>
+			<Router>
+				<div className="app-container">
+					<div className="header-container">
+						<Header />
+					</div>
+					<div>
+						<Routes>
+							<Route path="/proxies" element={<ProxiesPage />} />
+							<Route path="/profiles" element={<ProfilePage />} />
+							<Route path="/tasks" element={<Tasks />} />
+							<Route path="/toolbox" element={<Toolbox />} />
+							<Route path="*" element={<Navigate to="/profiles" replace />} />
+						</Routes>
+					</div>
 				</div>
-				<div>
-					<Routes>
-						<Route path="/proxies" element={<ProxiesPage />} />
-						<Route path="/profiles" element={<Profiles />} />
-						<Route path="/tasks" element={<Tasks />} />
-						<Route path="/toolbox" element={<Toolbox />} />
-						<Route path="*" element={<Navigate to="/proxies" replace />} />
-					</Routes>
-				</div>
-			</div>
-		</Router>
+			</Router>
+		</Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
