@@ -1,10 +1,9 @@
+import { Address } from "../pages/profile/AddressForm";
+import { ProfileAndPaymentInfo } from "../pages/profile/ProfileAndPaymentInfoForm";
+
 export default interface IProfile {
-	profileName: string;
-	firstName: string;
-	lastName: string;
-	address: string;
-	aptNum: string;
-	city: string;
-	state: string;
-	zipCode: string;
+	id: string;
+	profileAndPaymentInfo: ProfileAndPaymentInfo;
+	shippingInfo: Address;
+	billingInfo: Address;
 }

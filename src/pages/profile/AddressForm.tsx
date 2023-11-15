@@ -16,7 +16,6 @@ const stateList = [
 ];
 
 export interface Address {
-	id?: string;
 	firstName?: string;
 	lastName?: string;
 	address?: string;
@@ -44,7 +43,9 @@ const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
 		<div>
 			<form onSubmit={handleOnSubmit}>
 				<div style={{ border: "1px solid lightgray", padding: "10px" }}>
-					<div style={{ textAlign: "center" }}>{title}</div>
+					<div style={{ textAlign: "center", fontWeight: "bold" }}>
+						{title}
+					</div>
 					<input
 						type="text"
 						placeholder="First Name"

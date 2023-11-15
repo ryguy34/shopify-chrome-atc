@@ -10,7 +10,6 @@ export interface ProfileAndPaymentInfo {
 
 const ProfileAndPaymentInfoForm = ({
 	handleAddProfileAndPaymentInfo,
-	title,
 }: any): JSX.Element => {
 	const [profileAndPaymentInfo, setProfileAndPaymentInfo] =
 		useState<ProfileAndPaymentInfo>();
@@ -30,7 +29,9 @@ const ProfileAndPaymentInfoForm = ({
 		<div>
 			<form onSubmit={handleOnSubmit}>
 				<div style={{ border: "1px solid lightgray", padding: "10px" }}>
-					<div style={{ textAlign: "center" }}>{title}</div>
+					<div style={{ textAlign: "center", fontWeight: "bold" }}>
+						Profile Info
+					</div>
 					<input
 						type="text"
 						placeholder="Profile Name"
@@ -64,9 +65,12 @@ const ProfileAndPaymentInfoForm = ({
 							})
 						}
 					/>
+					<div style={{ textAlign: "center", fontWeight: "bold" }}>
+						Payment Info
+					</div>
 					<input
 						type="text"
-						placeholder="CC Number"
+						placeholder="Card Number"
 						value={profileAndPaymentInfo?.ccNumber}
 						onChange={(e) =>
 							setProfileAndPaymentInfo({

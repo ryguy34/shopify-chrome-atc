@@ -2,7 +2,7 @@ import { useState } from "react";
 import ProfileList from "./ProfileList";
 import "./ProfilePage.scss";
 import AddressForm, { Address } from "./AddressForm";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "react-bootstrap/ProgressBar";
 import { ProfileAndPaymentInfo } from "./ProfileAndPaymentInfoForm";
 import ProfileAndPaymentInfoForm from "./ProfileAndPaymentInfoForm";
 
@@ -34,8 +34,19 @@ const ProfilePage = (): JSX.Element => {
 		<div className="profile-page">
 			<ProfileList />
 			<div>
-				<div style={{ textAlign: "center" }}>
-					<ProgressBar page={page} />
+				<div
+					style={{
+						textAlign: "center",
+						marginBottom: "10px",
+						marginTop: "10px",
+					}}
+				>
+					<ProgressBar
+						label={`${page * 33 - 33}%`}
+						variant="success"
+						animated
+						now={page * 33 - 33}
+					/>
 				</div>
 				<div>
 					{page === 1 && (
@@ -43,19 +54,18 @@ const ProfilePage = (): JSX.Element => {
 							handleAddProfileAndPaymentInfo={
 								handleAddProfileAndPaymentInfo
 							}
-							title={"Profile and Payment Info"}
 						/>
 					)}
 					{page === 2 && (
 						<AddressForm
 							handleAddShippingInfo={handleAddShippingInfo}
-							title={"Shipping info"}
+							title={"Shipping Info"}
 						/>
 					)}
 					{page === 3 && (
 						<AddressForm
 							handleAddShippingInfo={handleAddBillingInfo}
-							title={"Billing info"}
+							title={"Billing Info"}
 						/>
 					)}
 				</div>
