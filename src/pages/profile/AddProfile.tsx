@@ -1,8 +1,8 @@
 import { useState } from "react";
 import BillingAddress from "./BillingAddress";
-import PaymentInfo from "./PaymentInfo";
+import PaymentInfo from "./ProfileAndPaymentInfoForm";
 import ProgressBar from "./ProgressBar";
-import ShippingAddress from "./ShippingAddress";
+import ShippingAddressForm, { Address } from "./AddressForm";
 
 const AddProfile = (): JSX.Element => {
 	const [page, setPage] = useState("1");
@@ -11,7 +11,7 @@ const AddProfile = (): JSX.Element => {
 		<div>
 			<ProgressBar />
 
-			{page === "1" && <ShippingAddress />}
+			{page === "1" && <ShippingAddressForm />}
 			{page === "2" && <BillingAddress />}
 			{page === "3" && <PaymentInfo />}
 		</div>

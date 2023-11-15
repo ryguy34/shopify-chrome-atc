@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import IProfile from "../interfaces/IProfile";
 
 const profileListSlice = createSlice({
 	name: "profileList",

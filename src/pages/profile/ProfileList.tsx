@@ -1,19 +1,14 @@
 import "./ProfileList.scss";
-import { useSelector } from "react-redux";
-import { selectAllProfiles } from "../../reducers/profileListSlice";
-import IProfile from "../../interfaces/IProfile";
 
 const ProfileList = (): JSX.Element => {
-	const profiles = useSelector(selectAllProfiles);
-
-	const renderProfileList = profiles.map((profile: IProfile) => (
-		<article>{profile.profileName}</article>
-	));
+	// const renderProfileList = shippingAddresses.map(
+	// 	(address: ShippingAddress) => <article>{address.firstName}</article>
+	// );
 
 	return (
 		<div className="profile-list">
 			Profiles
-			<section>{renderProfileList}</section>
+			{/*<section>{renderProfileList}</section>*/}
 		</div>
 	);
 };

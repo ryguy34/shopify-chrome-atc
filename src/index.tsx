@@ -27,11 +27,14 @@ ReactDOM.render(
 					</div>
 					<div>
 						<Routes>
-							<Route path="/proxies" element={<ProxiesPage />} />
 							<Route path="/profiles" element={<ProfilePage />} />
+							<Route path="/proxies" element={<ProxiesPage />} />
 							<Route path="/tasks" element={<Tasks />} />
 							<Route path="/toolbox" element={<Toolbox />} />
-							<Route path="*" element={<Navigate to="/profiles" replace />} />
+							<Route
+								path="*"
+								element={<Navigate to="/profiles" replace />}
+							/>
 						</Routes>
 					</div>
 				</div>

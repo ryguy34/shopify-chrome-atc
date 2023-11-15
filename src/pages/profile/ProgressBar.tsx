@@ -1,4 +1,4 @@
-const ProgressBar = (): JSX.Element => {
+const ProgressBar = ({ page }: any): JSX.Element => {
 	return <div>Progress Bar</div>;
 };
 

@@ -20,7 +20,7 @@ const Header = (): JSX.Element => {
 							title="Menu"
 							menuVariant="dark"
 						>
-							<LinkContainer to="/">
+							<LinkContainer to="/proxies">
 								<NavDropdown.Item>Proxies</NavDropdown.Item>
 							</LinkContainer>
 							<LinkContainer to="/profiles">
