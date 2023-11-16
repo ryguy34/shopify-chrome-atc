@@ -25,18 +25,16 @@ ReactDOM.render(
 					<div className="header-container">
 						<Header />
 					</div>
-					<div>
-						<Routes>
-							<Route path="/profiles" element={<ProfilePage />} />
-							<Route path="/proxies" element={<ProxiesPage />} />
-							<Route path="/tasks" element={<Tasks />} />
-							<Route path="/toolbox" element={<Toolbox />} />
-							<Route
-								path="*"
-								element={<Navigate to="/profiles" replace />}
-							/>
-						</Routes>
-					</div>
+					<Routes>
+						<Route path="/profiles" element={<ProfilePage />} />
+						<Route path="/proxies" element={<ProxiesPage />} />
+						<Route path="/tasks" element={<Tasks />} />
+						<Route path="/toolbox" element={<Toolbox />} />
+						<Route
+							path="*"
+							element={<Navigate to="/profiles" replace />}
+						/>
+					</Routes>
 				</div>
 			</Router>
 		</Provider>

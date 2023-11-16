@@ -5,11 +5,13 @@ import AddressForm, { Address } from "./AddressForm";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { ProfileAndPaymentInfo } from "./ProfileAndPaymentInfoForm";
 import ProfileAndPaymentInfoForm from "./ProfileAndPaymentInfoForm";
+import { addProfile, useAppDispatch } from "../../reducers/profileListSlice";
+import { v4 as uuid } from "uuid";
 
 const ProfilePage = (): JSX.Element => {
+	const dispatch = useAppDispatch();
 	const [page, setPage] = useState(1);
 	const [shippingAddress, setShippingAddress] = useState<Address>();
-	const [billingAddress, setBillingAddress] = useState<Address>();
 	const [profileAndPaymentInfo, setProfileAndPaymentInfo] =
 		useState<ProfileAndPaymentInfo>();
 
@@ -20,14 +22,21 @@ const ProfilePage = (): JSX.Element => {
 		setPage(page + 1);
 	};
 
-	const handleAddShippingInfo = (address: Address) => {
-		setShippingAddress(address);
-		setPage(page + 1);
-	};
-
-	const handleAddBillingInfo = (address: Address) => {
-		setBillingAddress(address);
-		setPage(1);
+	const handleAddAddressInfo = (address: Address) => {
+		if (page === 3) {
+			setPage(1);
+			dispatch(
+				addProfile({
+					id: uuid(),
+					profileAndPaymentInfo: profileAndPaymentInfo,
+					shippingInfo: shippingAddress,
+					billingInfo: address,
+				})
+			);
+		} else if (page === 2) {
+			setShippingAddress(address);
+			setPage(page + 1);
+		}
 	};
 
 	return (
@@ -38,7 +47,6 @@ const ProfilePage = (): JSX.Element => {
 					style={{
 						textAlign: "center",
 						marginBottom: "10px",
-						marginTop: "10px",
 					}}
 				>
 					<ProgressBar
@@ -58,13 +66,13 @@ const ProfilePage = (): JSX.Element => {
 					)}
 					{page === 2 && (
 						<AddressForm
-							handleAddShippingInfo={handleAddShippingInfo}
+							handleAddAddressInfo={handleAddAddressInfo}
 							title={"Shipping Info"}
 						/>
 					)}
 					{page === 3 && (
 						<AddressForm
-							handleAddShippingInfo={handleAddBillingInfo}
+							handleAddAddressInfo={handleAddAddressInfo}
 							title={"Billing Info"}
 						/>
 					)}

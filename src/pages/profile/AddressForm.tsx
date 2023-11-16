@@ -1,19 +1,20 @@
+import { Form } from "react-bootstrap";
 import "./ShippingAddress.scss";
 import { useState } from "react";
-const stateList = [
-	"Alabama",
-	"Alaska",
-	"Arizona",
-	"Arkansas",
-	"California",
-	"Colorado",
-	"Connecticut",
-	"Illinois",
-	"Texas",
-	"Tennessee",
-	"Florida",
-	"Michigan",
-];
+// const stateList = [
+// 	"Alabama",
+// 	"Alaska",
+// 	"Arizona",
+// 	"Arkansas",
+// 	"California",
+// 	"Colorado",
+// 	"Connecticut",
+// 	"Illinois",
+// 	"Texas",
+// 	"Tennessee",
+// 	"Florida",
+// 	"Michigan",
+// ];
 
 export interface Address {
 	firstName?: string;
@@ -25,7 +26,7 @@ export interface Address {
 	zipCode?: string;
 }
 
-const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
+const AddressForm = ({ handleAddAddressInfo, title }: any): JSX.Element => {
 	const [address, setAddress] = useState<Address>();
 
 	const handleOnSubmit = (e: any) => {
@@ -35,7 +36,7 @@ const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
 			return;
 		}
 
-		handleAddShippingInfo(address);
+		handleAddAddressInfo(address);
 		setAddress(undefined);
 	};
 
@@ -46,10 +47,9 @@ const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
 					<div style={{ textAlign: "center", fontWeight: "bold" }}>
 						{title}
 					</div>
-					<input
+					<Form.Control
+						placeholder="First name"
 						type="text"
-						placeholder="First Name"
-						value={address?.firstName}
 						onChange={(e) =>
 							setAddress({
 								...address,
@@ -57,10 +57,8 @@ const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
 							})
 						}
 					/>
-					<input
-						type="text"
-						placeholder="Last Name"
-						value={address?.lastName}
+					<Form.Control
+						placeholder="Last name"
 						onChange={(e) =>
 							setAddress({
 								...address,
@@ -68,10 +66,8 @@ const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
 							})
 						}
 					/>
-					<input
-						type="text"
+					<Form.Control
 						placeholder="Address"
-						value={address?.address}
 						onChange={(e) =>
 							setAddress({
 								...address,
@@ -79,10 +75,8 @@ const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
 							})
 						}
 					/>
-					<input
-						type="text"
+					<Form.Control
 						placeholder="Apt #"
-						value={address?.apartmentNumber}
 						onChange={(e) =>
 							setAddress({
 								...address,
@@ -90,10 +84,8 @@ const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
 							})
 						}
 					/>
-					<input
-						type="text"
+					<Form.Control
 						placeholder="City"
-						value={address?.city}
 						onChange={(e) =>
 							setAddress({
 								...address,
@@ -101,10 +93,8 @@ const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
 							})
 						}
 					/>
-					<input
-						type="text"
+					<Form.Control
 						placeholder="Zip Code"
-						value={address?.zipCode}
 						onChange={(e) =>
 							setAddress({
 								...address,
@@ -112,8 +102,13 @@ const AddressForm = ({ handleAddShippingInfo, title }: any): JSX.Element => {
 							})
 						}
 					/>
+					<Form.Check // prettier-ignore
+						type="switch"
+						id="custom-switch"
+						label="Shipping same as billing"
+					/>
 					<div style={{ textAlign: "center" }}>
-						<button type="submit">Add Shipping</button>
+						<button type="submit">Add {title}</button>
 					</div>
 				</div>
 			</form>
