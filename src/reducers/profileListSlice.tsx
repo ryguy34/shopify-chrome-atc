@@ -12,7 +12,7 @@ const profileListSlice = createSlice({
 			console.log(action.payload);
 		},
 		deleteProfile: (state, action: PayloadAction<string>) => {
-			state.filter(function (profile: IProfile) {
+			return state.filter(function (profile: IProfile) {
 				return profile.id !== action.payload;
 			});
 		},

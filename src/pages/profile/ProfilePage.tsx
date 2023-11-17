@@ -39,6 +39,10 @@ const ProfilePage = (): JSX.Element => {
 		}
 	};
 
+	const handleGoBack = () => {
+		setPage(page - 1);
+	};
+
 	return (
 		<div className="profile-page">
 			<ProfileList />
@@ -67,13 +71,15 @@ const ProfilePage = (): JSX.Element => {
 					{page === 2 && (
 						<AddressForm
 							handleAddAddressInfo={handleAddAddressInfo}
-							title={"Shipping Info"}
+							handleGoBack={handleGoBack}
+							title={"Shipping"}
 						/>
 					)}
 					{page === 3 && (
 						<AddressForm
 							handleAddAddressInfo={handleAddAddressInfo}
-							title={"Billing Info"}
+							handleGoBack={handleGoBack}
+							title={"Billing"}
 						/>
 					)}
 				</div>

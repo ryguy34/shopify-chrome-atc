@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 
 export interface ProfileAndPaymentInfo {
 	profileName?: string;
@@ -10,6 +11,7 @@ export interface ProfileAndPaymentInfo {
 
 const ProfileAndPaymentInfoForm = ({
 	handleAddProfileAndPaymentInfo,
+	handleGoBack,
 }: any): JSX.Element => {
 	const [profileAndPaymentInfo, setProfileAndPaymentInfo] =
 		useState<ProfileAndPaymentInfo>();
@@ -27,74 +29,72 @@ const ProfileAndPaymentInfoForm = ({
 
 	return (
 		<div>
-			<form onSubmit={handleOnSubmit}>
-				<div style={{ border: "1px solid lightgray", padding: "10px" }}>
-					<div style={{ textAlign: "center", fontWeight: "bold" }}>
-						Profile Info
-					</div>
-					<input
-						type="text"
-						placeholder="Profile Name"
-						value={profileAndPaymentInfo?.profileName}
-						onChange={(e) =>
-							setProfileAndPaymentInfo({
-								...profileAndPaymentInfo,
-								profileName: e.target.value,
-							})
-						}
-					/>
-					<input
-						type="text"
-						placeholder="Email"
-						value={profileAndPaymentInfo?.email}
-						onChange={(e) =>
-							setProfileAndPaymentInfo({
-								...profileAndPaymentInfo,
-								email: e.target.value,
-							})
-						}
-					/>
-					<input
-						type="text"
-						placeholder="Phone Number"
-						value={profileAndPaymentInfo?.phoneNumber}
-						onChange={(e) =>
-							setProfileAndPaymentInfo({
-								...profileAndPaymentInfo,
-								phoneNumber: e.target.value,
-							})
-						}
-					/>
-					<div style={{ textAlign: "center", fontWeight: "bold" }}>
-						Payment Info
-					</div>
-					<input
-						type="text"
-						placeholder="Card Number"
-						value={profileAndPaymentInfo?.ccNumber}
-						onChange={(e) =>
-							setProfileAndPaymentInfo({
-								...profileAndPaymentInfo,
-								ccNumber: e.target.value,
-							})
-						}
-					/>
-					<input
-						type="text"
-						placeholder="CCV"
-						value={profileAndPaymentInfo?.ccv}
-						onChange={(e) =>
-							setProfileAndPaymentInfo({
-								...profileAndPaymentInfo,
-								ccv: e.target.value,
-							})
-						}
-					/>
-					<div style={{ textAlign: "center" }}>
-						<button type="submit">Add Profile Info</button>
-					</div>
-				</div>
-			</form>
+			<div style={{ textAlign: "center", fontWeight: "bold" }}>
+				Profile Info
+			</div>
+			<Form.Control
+				placeholder="Profile Name"
+				type="text"
+				onChange={(e) =>
+					setProfileAndPaymentInfo({
+						...profileAndPaymentInfo,
+						profileName: e.target.value,
+					})
+				}
+			/>
+			<Form.Control
+				placeholder="Email"
+				type="text"
+				onChange={(e) =>
+					setProfileAndPaymentInfo({
+						...profileAndPaymentInfo,
+						email: e.target.value,
+					})
+				}
+			/>
+			<Form.Control
+				placeholder="Phone Number"
+				type="text"
+				onChange={(e) =>
+					setProfileAndPaymentInfo({
+						...profileAndPaymentInfo,
+						phoneNumber: e.target.value,
+					})
+				}
+			/>
+			<div style={{ textAlign: "center", fontWeight: "bold" }}>
+				Payment Info
+			</div>
+			<Form.Control
+				placeholder="Card Number"
+				type="text"
+				onChange={(e) =>
+					setProfileAndPaymentInfo({
+						...profileAndPaymentInfo,
+						ccNumber: e.target.value,
+					})
+				}
+			/>
+			<Form.Control
+				placeholder="CCV"
+				type="text"
+				onChange={(e) =>
+					setProfileAndPaymentInfo({
+						...profileAndPaymentInfo,
+						ccv: e.target.value,
+					})
+				}
+			/>
+			<div
+				style={{
+					textAlign: "center",
+					marginTop: "10px",
+				}}
+			>
+				<Button variant="success" onClick={handleOnSubmit}>
+					Add profile
+				</Button>
+			</div>
 		</div>
 	);
 };
