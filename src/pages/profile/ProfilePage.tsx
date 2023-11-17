@@ -22,7 +22,10 @@ const ProfilePage = (): JSX.Element => {
 		setPage(page + 1);
 	};
 
-	const handleAddAddressInfo = (address: Address) => {
+	const handleAddAddressInfo = (
+		address: Address,
+		isBillingAndShippingSame: boolean
+	) => {
 		if (page === 3) {
 			setPage(1);
 			dispatch(
@@ -34,8 +37,21 @@ const ProfilePage = (): JSX.Element => {
 				})
 			);
 		} else if (page === 2) {
-			setShippingAddress(address);
-			setPage(page + 1);
+			if (isBillingAndShippingSame) {
+				dispatch(
+					addProfile({
+						id: uuid(),
+						profileAndPaymentInfo: profileAndPaymentInfo,
+						shippingInfo: address,
+						billingInfo: address,
+					})
+				);
+
+				setPage(1);
+			} else {
+				setShippingAddress(address);
+				setPage(page + 1);
+			}
 		}
 	};
 

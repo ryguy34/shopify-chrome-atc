@@ -32,6 +32,8 @@ const AddressForm = ({
 	title,
 }: any): JSX.Element => {
 	const [address, setAddress] = useState<Address>();
+	const [isBillingAndShippingSame, setIsBillingAndShippingSame] =
+		useState<Boolean>(false);
 
 	const handleOnSubmit = (e: any) => {
 		e.preventDefault();
@@ -40,7 +42,7 @@ const AddressForm = ({
 			return;
 		}
 
-		handleAddAddressInfo(address);
+		handleAddAddressInfo(address, isBillingAndShippingSame);
 		setAddress(undefined);
 	};
 
@@ -108,10 +110,13 @@ const AddressForm = ({
 					})
 				}
 			/>
-			<Form.Check // prettier-ignore
+			<Form.Check
 				type="switch"
 				id="custom-switch"
 				label="Shipping same as billing"
+				onClick={() => {
+					setIsBillingAndShippingSame(!isBillingAndShippingSame);
+				}}
 			/>
 			<div style={{ display: "flex", justifyContent: "space-between" }}>
 				<Button

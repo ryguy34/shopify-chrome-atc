@@ -9,7 +9,7 @@ const profileListSlice = createSlice({
 	reducers: {
 		addProfile: (state, action: PayloadAction<IProfile>) => {
 			state.push(action.payload);
-			console.log(action.payload);
+			//console.log(action.payload);
 		},
 		deleteProfile: (state, action: PayloadAction<string>) => {
 			return state.filter(function (profile: IProfile) {

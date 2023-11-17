@@ -92,7 +92,7 @@ const ProfileAndPaymentInfoForm = ({
 				}}
 			>
 				<Button variant="success" onClick={handleOnSubmit}>
-					Add profile
+					Next
 				</Button>
 			</div>
 		</div>
